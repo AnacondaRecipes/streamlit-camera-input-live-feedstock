@@ -40,7 +40,7 @@ about:
   doc_url: https://github.com/blackary/streamlit-camera-input-live/blob/main/README.md
   summary: Alternative version of st.camera_input which returns the webcam images live, without any button press needed
   description: |
-    A steramlit component that provides an alternative version of st.camera_input 
+    A streamlit component that provides an alternative version of st.camera_input 
     which returns the webcam images live, without any button press needed
   license: MIT
   license_file: LICENSE
