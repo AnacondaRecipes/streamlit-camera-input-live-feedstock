@@ -1,0 +1,51 @@
+{% set name = "streamlit-camera-input-live" %}
+{% set version = "0.2.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 20ceb952b98410084176fcfeb9148e02ea29033a88d4a923161ac7890cedae0f
+
+build:
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+  # s390x is missing streamlit
+  skip: true  # [py<37 or s390x]
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+    - wheel
+  run:
+    - python
+    - streamlit >=1.2
+    - jinja2
+
+test:
+  imports:
+    - camera_input_live
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/blackary/streamlit-camera-input-live
+  dev_url: https://github.com/blackary/streamlit-camera-input-live
+  doc_url: https://github.com/blackary/streamlit-camera-input-live/blob/main/README.md
+  summary: Alternative version of st.camera_input which returns the webcam images live, without any button press needed
+  description: |
+    A streamlit component that provides an alternative version of st.camera_input 
+    which returns the webcam images live, without any button press needed
+  license: MIT
+  license_file: LICENSE
+  license_family: MIT
+
+extra:
+  recipe-maintainers:
+    - ELundby45
